@@ -71,13 +71,13 @@ def optimistic_locking(thread_id):
             counter += 1
             new_version = version + 1
 
-            # Оновилюємо рядок, якщо версія не змінилася
+            # Оновилює рядок, якщо версія не змінилася
             cursor.execute(
                 "UPDATE user_counter SET counter = %s, version = %s WHERE user_id = 1 AND version = %s",
                 (counter, new_version, version)
             )
             conn.commit()
-            # Якщо оновлення відбулося - виходимо з циклу
+            # Якщо оновлення відбулося - вихід з циклу
             if cursor.rowcount > 0:
                 break
 

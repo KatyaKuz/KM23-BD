@@ -15,7 +15,7 @@ THREADS = 10 # Кількість паралельних потоків
 ITERATIONS = 10000 # Кількість оновлень в кожному потоці
 TOTAL_EXPECTED = THREADS * ITERATIONS  # Очікуване максимальне значення каунтера
 
-def lost_update(thread_id):
+def lost_update():
     conn = psycopg2.connect(**DB_CONFIG)
     cursor = conn.cursor()
 
@@ -31,7 +31,7 @@ def lost_update(thread_id):
     cursor.close()
     conn.close()
 
-def in_place_update(thread_id):
+def in_place_update():
     conn = psycopg2.connect(**DB_CONFIG)
     cursor = conn.cursor()
 
@@ -43,7 +43,7 @@ def in_place_update(thread_id):
     cursor.close()
     conn.close()
 
-def row_level_locking(thread_id):
+def row_level_locking():
     conn = psycopg2.connect(**DB_CONFIG)
     cursor = conn.cursor()
 
@@ -59,7 +59,7 @@ def row_level_locking(thread_id):
     cursor.close()
     conn.close()
 
-def optimistic_locking(thread_id):
+def optimistic_locking():
     conn = psycopg2.connect(**DB_CONFIG)
     cursor = conn.cursor()
 
